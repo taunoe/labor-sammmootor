@@ -5,7 +5,7 @@
  * 
  * Author: Tauno Erik
  * Started 20.02.2025
- * Edited  27.05.2025
+ * Edited  06.03.2025
  */
 #include <Arduino.h>
 //#include "TaunoStepperMotor.h"
@@ -39,8 +39,8 @@ void setup()
   // Stepper motor pins
   pinMode(M1_PULSE_PIN, OUTPUT);
   pinMode(M1_DIRECTION_PIN, OUTPUT);
-  // pinMode(M2_PULSE_PIN, OUTPUT);
-  // pinMode(M2_DIRECTION_PIN, OUTPUT);
+  pinMode(M2_PULSE_PIN, OUTPUT);
+  pinMode(M2_DIRECTION_PIN, OUTPUT);
 
   // BTN pins
   pinMode(BTN_LEFT_PIN, INPUT);
@@ -54,18 +54,17 @@ void loop()
   {
     Serial.println("left");
 
-    digitalWrite(M1_DIRECTION_PIN, CCW);
-    run(M1_SPEED, M1_PULSE_PIN);
+    //digitalWrite(M1_DIRECTION_PIN, CCW);
+    //run(M1_SPEED, M1_PULSE_PIN);
 
-    //digitalWrite(M2_DIRECTION_PIN, CCW);
-    //run(M2_SPEED, M2_PULSE_PIN);
+    digitalWrite(M2_DIRECTION_PIN, CCW);
+    run(M2_SPEED, M2_PULSE_PIN);
   }
 
   // If Button RIGHT is pressed (LOW because of pull-up)
   if (digitalRead(BTN_RIGHT_PIN) == LOW)
   {
     Serial.println("right");
-    
     digitalWrite(M1_DIRECTION_PIN, CW);
     run(M1_SPEED, M1_PULSE_PIN);
     
